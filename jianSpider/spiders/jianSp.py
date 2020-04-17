@@ -9,10 +9,10 @@ from email.mime.text import MIMEText
 
 # to = ['yy18770711861@163.com']
 to = ['450061754@qq.com']
-host = "smtp.163.com"  # smtp·şÎñÆ÷
-user = "yy18770711861"  # ÓÃ»§Ãû
-password = "yy940815"  # ÃÜÂë
-postfix = "163.com"  # ºó×º
+host = "smtp.163.com"  # smtpæœåŠ¡å™¨
+user = "yy18770711861"  # ç”¨æˆ·å
+password = "######"  # å¯†ç 
+postfix = "163.com"  # åç¼€
 
 class jianSp(scrapy.Spider):
     name = 'jianSp'
@@ -58,12 +58,12 @@ class jianSp(scrapy.Spider):
         cContent = '\n'.join(response.xpath('//div[@class="text-main"]//text()').extract()).strip().replace('u3000','').replace('\n','').encode("GBK", 'ignore')
         date = datetime.datetime.now().date()
         detester = date.strftime('%Y-%m-%d').replace('-','')
-        if cTime == detester and ('Ì©ºÍ' in cTitle or 'Íò°²' in cTitle or '¼ªË®' in cTitle
-                                  or '¸´ºÏ·Ê' in cTitle or 'ÖÖ×Ó' in cTitle or 'Å©Òµ' in cTitle
+        if cTime == detester and ('æ³°å’Œ' in cTitle or 'ä¸‡å®‰' in cTitle or 'å‰æ°´' in cTitle
+                                  or 'å¤åˆè‚¥' in cTitle or 'ç§å­' in cTitle or 'å†œä¸š' in cTitle
                                   ):
-        # if ('ÌåÓı' in cTitle or 'Íò°²' in cTitle or '¼ªË®' in cTitle
-        #                           or '¸´ºÏ·Ê' in cTitle or 'ÖÖ×Ó' in cTitle or 'Å©Òµ' in cTitle):
-            titie = '¼ª°²ÊĞ¹«¹²×ÊÔ´½»Ò×Íø'
+        # if ('ä½“è‚²' in cTitle or 'ä¸‡å®‰' in cTitle or 'å‰æ°´' in cTitle
+        #                           or 'å¤åˆè‚¥' in cTitle or 'ç§å­' in cTitle or 'å†œä¸š' in cTitle):
+            titie = 'å‰å®‰å¸‚å…¬å…±èµ„æºäº¤æ˜“ç½‘'
             message = cTitle + '\n\n'+ cContent
 
             def send_mail(to_list, sub, content):
